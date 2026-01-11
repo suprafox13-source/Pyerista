@@ -2,68 +2,62 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Pyerista | Teknoloji & Arduino Projeleri</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pyerista</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="header">
-  <div class="logo">
-    <h1>Pyerista</h1>
-    <span>pyerista.onrender.com</span>
-  </div>
-
-  <a
-    href="https://www.youtube.com/@XxmanasxX"
-    target="_blank"
-    class="yt-button"
-  >
+  <h1>Pyerista</h1>
+  <a href="https://www.youtube.com/@XxmanasxX" target="_blank" class="yt-button">
     Pyerista YT
   </a>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <h2>Arduino & Teknoloji Projeleri</h2>
-  <p>
-    Pyerista, Arduino projeleri ve yazılım denemeleri paylaşılan
-    bir geliştirme platformudur.
-  </p>
-</section>
+<!-- ANA SAYFA -->
+<section id="projects">
 
-<!-- PROJECTS -->
-<section class="projects">
-
-  <!-- PROJECT CARD -->
   <div class="project-card">
-    <img
-      src="assets/ardunioproject1.png"
-      alt="Blink Arduino Projesi"
-    >
+    <img src="assets/ardunioproject1.png" alt="Blink Projesi">
 
     <h3>Blink (LED Yakıp Söndürme)</h3>
+    <p>Arduino’nun en basit projesi: LED yakıp söndürme.</p>
 
-    <p class="project-desc">
-      Arduino’nun en basit projesi: LED yakıp söndürme.
-    </p>
+    <button onclick="openDetail()">Detayları Gör</button>
+  </div>
 
-    <button onclick="toggleDetails()" class="detail-btn">
-      Detayları Gör
-    </button>
+</section>
 
-    <div id="details" class="details hidden">
+<!-- DETAY SAYFASI -->
+<section id="project-detail" class="hidden">
 
-      <h4>Bağlantılar</h4>
-      <ul>
-        <li>LED → 13. pin</li>
-        <li>220Ω direnç</li>
-        <li>GND → Eksi (-)</li>
-      </ul>
+  <button class="back-btn" onclick="closeDetail()">← Geri Dön</button>
 
-      <h4>Kodlar</h4>
-      <pre>
+  <h2>Blink (LED Yakıp Söndürme)</h2>
+
+  <h3>Açıklama</h3>
+  <p>
+    Bu proje Arduino ile bir LED’in belirli aralıklarla
+    yakılıp söndürülmesini gösterir.
+  </p>
+
+  <h3>Malzemeler</h3>
+  <ul>
+    <li>Arduino Uno</li>
+    <li>LED</li>
+    <li>220Ω direnç</li>
+    <li>Breadboard</li>
+    <li>Jumper kablolar</li>
+  </ul>
+
+  <h3>Bağlantılar</h3>
+  <ul>
+    <li>LED (+) → 13. pin</li>
+    <li>LED (−) → GND</li>
+  </ul>
+
+  <h3>Kodlar</h3>
+  <pre>
 void setup() {
   pinMode(13, OUTPUT);
 }
@@ -74,18 +68,12 @@ void loop() {
   digitalWrite(13, LOW);
   delay(1000);
 }
-      </pre>
-
-    </div>
-  </div>
+  </pre>
 
 </section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <p>© 2026 Pyerista — Tüm hakları saklıdır.</p>
-</footer>
 
 <script src="script.js"></script>
 </body>
 </html>
+
+
