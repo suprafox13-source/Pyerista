@@ -1,57 +1,57 @@
 body {
-  background:#0b0b0b;
-  color:white;
-  font-family:Arial, sans-serif;
+  background: #0b0b0b;
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
 .project-card {
-  background:#111;
-  max-width:600px;
-  margin:30px auto;
-  padding:20px;
-  border-radius:10px;
-  text-align:center;
+  background: #111;
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
 }
 
 .project-card img {
-  width:100%;
-  max-width:300px;
-  border-radius:8px;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
 }
 
 button {
-  background:red;
-  color:white;
-  border:none;
-  padding:10px 15px;
-  border-radius:6px;
-  cursor:pointer;
+  background: red;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .modal {
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.8);
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
 }
 
 .modal-content {
-  background:#111;
-  max-width:600px;
-  margin:8% auto;
-  padding:20px;
-  border-radius:10px;
+  background: #111;
+  max-width: 600px;
+  margin: 8% auto;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .close {
-  float:right;
-  font-size:28px;
-  cursor:pointer;
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
 }
 
 pre {
-  background:black;
-  padding:10px;
-  border-radius:6px;
-  overflow-x:auto;
+  background: black;
+  padding: 10px;
+  border-radius: 6px;
+  overflow-x: auto;
 }
