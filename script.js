@@ -1,14 +1,7 @@
-function toggleDetails(id) {
-  const el = document.getElementById(id);
+function openModal(id) {
+  document.getElementById(id).style.display = "block";
+}
 
-  if (!el) {
-    console.error("Böyle bir id yok:", id);
-    return;
-  }
-
-  if (el.style.display === "block") {
-    el.style.display = "none";
-  } else {
-    el.style.display = "block";
-  }
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
 }
