@@ -59,4 +59,12 @@ pre {
   background: black;
   padding: 10px;
   border-radius: 6px;
+.detail-img {
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin: 20px auto;
+  border-radius: 12px;
 }
+
+
