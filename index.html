@@ -2,20 +2,90 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Pyerista</title>
+  <title>Pyerista | Teknoloji & Arduino Projeleri</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body style="background:black;color:white;text-align:center">
+<body>
 
-  <h1>Pyerista Resim Test</h1>
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <h1>Pyerista</h1>
+    <span>pyerista.onrender.com</span>
+  </div>
 
-  <!-- RESİM TEST -->
-  <img
-    src="assets/ardunioproject1.png"
-    style="width:300px;border:3px solid red"
-    alt="Arduino Proje 1"
+  <a
+    href="https://www.youtube.com/@XxmanasxX"
+    target="_blank"
+    class="yt-button"
   >
+    Pyerista YT
+  </a>
+</header>
 
-  <p>Eğer bu yazının üstünde resim görüyorsan HER ŞEY DOĞRU.</p>
+<!-- HERO -->
+<section class="hero">
+  <h2>Arduino & Teknoloji Projeleri</h2>
+  <p>
+    Pyerista, Arduino projeleri ve yazılım denemeleri paylaşılan
+    bir geliştirme platformudur.
+  </p>
+</section>
 
+<!-- PROJECTS -->
+<section class="projects">
+
+  <!-- PROJECT CARD -->
+  <div class="project-card">
+    <img
+      src="assets/ardunioproject1.png"
+      alt="Blink Arduino Projesi"
+    >
+
+    <h3>Blink (LED Yakıp Söndürme)</h3>
+
+    <p class="project-desc">
+      Arduino’nun en basit projesi: LED yakıp söndürme.
+    </p>
+
+    <button onclick="toggleDetails()" class="detail-btn">
+      Detayları Gör
+    </button>
+
+    <div id="details" class="details hidden">
+
+      <h4>Bağlantılar</h4>
+      <ul>
+        <li>LED → 13. pin</li>
+        <li>220Ω direnç</li>
+        <li>GND → Eksi (-)</li>
+      </ul>
+
+      <h4>Kodlar</h4>
+      <pre>
+void setup() {
+  pinMode(13, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(13, HIGH);
+  delay(1000);
+  digitalWrite(13, LOW);
+  delay(1000);
+}
+      </pre>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 Pyerista — Tüm hakları saklıdır.</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
