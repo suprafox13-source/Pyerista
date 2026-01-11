@@ -2,13 +2,16 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Pyerista | Arduino Projeleri</title>
+  <title>Pyerista | pyerista.onrender.com</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-  <h1>Pyerista</h1>
+  <div>
+    <h1>Pyerista</h1>
+    <span class="site-url">pyerista.onrender.com</span>
+  </div>
 
   <a class="yt-btn"
      href="https://www.youtube.com/@XxmanasxX"
@@ -19,28 +22,34 @@
 
 <main>
 
-  <!-- PROJE KARTI -->
   <section class="project-card">
-    <img src="public/Ardunio Project1.png" alt="Blink Projesi">
-    <h2>Blink (LED Yakıp Söndürme)</h2>
-    <p>Arduino’nun en basit projesi: LED yakıp söndürme.</p>
-    <a href="#blink-detay" class="btn">Detayları Gör</a>
-  </section>
-
-  <!-- DETAY BÖLÜMÜ -->
-  <section id="blink-detay" class="detail">
     <h2>Blink (LED Yakıp Söndürme)</h2>
 
-    <img src="public/Ardunio Project1.png" alt="Blink Detay">
-
-    <h3>Açıklama</h3>
-    <p>
-      Arduino’nun en basit projesi LED yakıp söndürmedir.
-      Bu projede dijital pin kullanımı ve delay mantığı öğrenilir.
+    <p class="desc">
+      Arduino’nun en basit projesi: LED yakıp söndürme.
     </p>
 
-    <h3>Arduino Kodu</h3>
-    <pre><code>
+    <img
+      src="public-site/ardunioproject1.png"
+      alt="Blink Projesi"
+      class="project-img"
+    >
+
+    <button class="detail-btn" onclick="toggleDetails()">
+      Detayları Gör
+    </button>
+
+    <div id="details" class="details hidden">
+
+      <h3>Bağlantılar</h3>
+      <ul>
+        <li>LED → 13. pin</li>
+        <li>220Ω direnç</li>
+        <li>GND → eksi (-)</li>
+      </ul>
+
+      <h3>Kodlar</h3>
+      <pre>
 void setup() {
   pinMode(13, OUTPUT);
 }
@@ -51,14 +60,9 @@ void loop() {
   digitalWrite(13, LOW);
   delay(1000);
 }
-    </code></pre>
+      </pre>
 
-    <h3>Bağlantılar</h3>
-    <ul>
-      <li>LED → 13. pin</li>
-      <li>220Ω direnç</li>
-      <li>GND → eksi (-)</li>
-    </ul>
+    </div>
   </section>
 
 </main>
