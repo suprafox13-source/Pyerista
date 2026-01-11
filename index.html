@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Pyerista</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Pyerista</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <h1 style="text-align:center;">Pyerista</h1>
 
+<!-- PROJE 1 -->
 <div class="project-card">
   <h2>Blink (LED Yakıp Söndürme)</h2>
 
@@ -18,16 +19,29 @@
     Ardunionun en basit projesi LED yakıp söndürme.
   </p>
 
-  <button onclick="openModal()">Detayları Gör</button>
+  <button onclick="openModal('p1')">Detayları Gör</button>
 </div>
 
-<!-- DETAY MODAL -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">×</span>
+<!-- PROJE 2 -->
+<div class="project-card">
+  <h2>Trafik Lambası</h2>
 
-    <h3>Kod</h3>
-    <pre>
+  <img src="assets/ardunioproject2.png" alt="Trafik Lambası">
+
+  <p>
+    Arduino ile yapılan en kolay projelerden biri olan trafik lambası uygulaması.
+  </p>
+
+  <button onclick="openModal('p2')">Detayları Gör</button>
+</div>
+
+<!-- MODAL PROJE 1 -->
+<div id="p1" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('p1')">×</span>
+
+    <h3>Blink Projesi Kodları</h3>
+<pre>
 void setup() {
   pinMode(13, OUTPUT);
 }
@@ -38,17 +52,50 @@ void loop() {
   digitalWrite(13, LOW);
   delay(1000);
 }
-    </pre>
+</pre>
+  </div>
+</div>
+
+<!-- MODAL PROJE 2 -->
+<div id="p2" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('p2')">×</span>
+
+    <h3>Trafik Lambası Kodları</h3>
+<pre>
+int k = 8;
+int s = 9;
+int y = 10;
+
+void setup() {
+  pinMode(k, OUTPUT);
+  pinMode(s, OUTPUT);
+  pinMode(y, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(k, HIGH);
+  delay(3000);
+  digitalWrite(k, LOW);
+
+  digitalWrite(s, HIGH);
+  delay(1000);
+  digitalWrite(s, LOW);
+
+  digitalWrite(y, HIGH);
+  delay(3000);
+  digitalWrite(y, LOW);
+}
+</pre>
   </div>
 </div>
 
 <script>
-function openModal() {
-  document.getElementById("modal").style.display = "block";
+function openModal(id) {
+  document.getElementById(id).style.display = "block";
 }
-
-function closeModal() {
-  document.getElementById("modal").style.display = "none";
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
 }
 </script>
 
