@@ -10,27 +10,33 @@
 <h1 class="site-title">Pyerista – Arduino Projeleri</h1>
 
 <!-- PROJE 1 -->
-<section class="project-card">
+<div class="project-card">
   <h2>💡 Blink (LED Yakıp Söndürme)</h2>
+  <img src="assets/ardunioproject1.png" alt="Blink Projesi">
+  <p>Ardunionun en basit projesi LED yakıp söndürme.</p>
+  <button onclick="openModal('modal1')">Detayları Gör</button>
+</div>
 
-  <img src="assets/ardunioproject1.png" alt="Arduino Blink">
+<!-- PROJE 2 -->
+<div class="project-card">
+  <h2>🚦 Arduino Trafik Lambası</h2>
+  <img src="assets/ardunioproject2.png" alt="Trafik Lambası">
+  <p>Arduino ile yapılan en kolay projelerden biri.</p>
+  <button onclick="openModal('modal2')">Detayları Gör</button>
+</div>
 
-  <p class="short-desc">
-    Ardunionun en basit projesi LED yakıp söndürme.
-  </p>
-
-  <button onclick="toggleDetails('p1')">Detayları Gör</button>
-
-  <div id="p1" class="details">
-    <h3>Açıklama</h3>
-    <p>Bu proje Arduino ile LED kontrolünü öğretir.</p>
+<!-- MODAL 1 -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal1')">&times;</span>
+    <h2>💡 Blink (LED Yakıp Söndürme)</h2>
+    <img src="assets/ardunioproject1.png">
 
     <h3>Kod</h3>
     <pre>
 void setup() {
   pinMode(13, OUTPUT);
 }
-
 void loop() {
   digitalWrite(13, HIGH);
   delay(1000);
@@ -38,57 +44,36 @@ void loop() {
   delay(1000);
 }
     </pre>
-
-    <button onclick="toggleDetails('p1')">Geri</button>
   </div>
-</section>
+</div>
 
-<!-- PROJE 2 -->
-<section class="project-card">
-  <h2>🚦 Trafik Lambası (Arduino)</h2>
-
-  <img src="assets/ardunioproject2.png" alt="Arduino Trafik Lambası">
-
-  <p class="short-desc">
-    Arduino ile 3 LED kullanılarak yapılan trafik lambası projesi.
-  </p>
-
-  <button onclick="toggleDetails('p2')">Detayları Gör</button>
-
-  <div id="p2" class="details">
-    <h3>Açıklama</h3>
-    <p>Bu proje zamanlama ve çoklu LED kontrolünü öğretir.</p>
+<!-- MODAL 2 -->
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal2')">&times;</span>
+    <h2>🚦 Arduino Trafik Lambası</h2>
+    <img src="assets/ardunioproject2.png">
 
     <h3>Kod</h3>
     <pre>
-int kirmizi = 8;
-int sari = 9;
-int yesil = 10;
+int k = 8;
+int s = 9;
+int y = 10;
 
 void setup() {
-  pinMode(kirmizi, OUTPUT);
-  pinMode(sari, OUTPUT);
-  pinMode(yesil, OUTPUT);
+  pinMode(k, OUTPUT);
+  pinMode(s, OUTPUT);
+  pinMode(y, OUTPUT);
 }
 
 void loop() {
-  digitalWrite(kirmizi, HIGH);
-  delay(5000);
-  digitalWrite(kirmizi, LOW);
-
-  digitalWrite(sari, HIGH);
-  delay(2000);
-  digitalWrite(sari, LOW);
-
-  digitalWrite(yesil, HIGH);
-  delay(5000);
-  digitalWrite(yesil, LOW);
+  digitalWrite(k, HIGH); delay(3000); digitalWrite(k, LOW);
+  digitalWrite(s, HIGH); delay(1000); digitalWrite(s, LOW);
+  digitalWrite(y, HIGH); delay(3000); digitalWrite(y, LOW);
 }
     </pre>
-
-    <button onclick="toggleDetails('p2')">Geri</button>
   </div>
-</section>
+</div>
 
 <script src="script.js"></script>
 </body>
