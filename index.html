@@ -7,64 +7,26 @@
 </head>
 <body>
 
-<header class="header">
-  <h1>Pyerista</h1>
-  <a href="https://www.youtube.com/@XxmanasxX" target="_blank" class="yt-button">
-    Pyerista YT
-  </a>
-</header>
+<h1 class="site-title">Pyerista – Arduino Projeleri</h1>
 
-<!-- ANA SAYFA -->
-<section id="projects">
+<!-- PROJE 1 -->
+<section class="project-card">
+  <h2>💡 Blink (LED Yakıp Söndürme)</h2>
 
-  <div class="project-card">
-    <img src="assets/ardunioproject1.png" alt="Blink Projesi">
+  <img src="assets/ardunioproject1.png" alt="Arduino Blink">
 
-    <h3>Blink (LED Yakıp Söndürme)</h3>
-    <p>Arduino’nun en basit projesi: LED yakıp söndürme.</p>
-
-    <button onclick="openDetail()">Detayları Gör</button>
-  </div>
-
-</section>
-
-<!-- DETAY SAYFASI -->
-<section id="project-detail" class="hidden">
-
-  <button class="back-btn" onclick="closeDetail()">← Geri Dön</button>
-
-  <!-- 🔥 DETAY RESMİ -->
-  <img
-    src="assets/ardunioproject1.png"
-    alt="Blink Detay Resmi"
-    class="detail-img"
-  >
-
-  <h2>Blink (LED Yakıp Söndürme)</h2>
-
-  <h3>Açıklama</h3>
-  <p>
-    Bu proje Arduino ile bir LED’in belirli aralıklarla
-    yakılıp söndürülmesini gösterir.
+  <p class="short-desc">
+    Ardunionun en basit projesi LED yakıp söndürme.
   </p>
 
-  <h3>Malzemeler</h3>
-  <ul>
-    <li>Arduino Uno</li>
-    <li>LED</li>
-    <li>220Ω direnç</li>
-    <li>Breadboard</li>
-    <li>2 Adet Jumper kablo</li>
-  </ul>
+  <button onclick="toggleDetails('p1')">Detayları Gör</button>
 
-  <h3>Bağlantılar</h3>
-  <ul>
-    <li>LED (+) → 13. pin</li>
-    <li>LED (−) → GND</li>
-  </ul>
+  <div id="p1" class="details">
+    <h3>Açıklama</h3>
+    <p>Bu proje Arduino ile LED kontrolünü öğretir.</p>
 
-  <h3>Kodlar</h3>
-  <pre>
+    <h3>Kod</h3>
+    <pre>
 void setup() {
   pinMode(13, OUTPUT);
 }
@@ -75,11 +37,59 @@ void loop() {
   digitalWrite(13, LOW);
   delay(1000);
 }
-  </pre>
+    </pre>
 
+    <button onclick="toggleDetails('p1')">Geri</button>
+  </div>
+</section>
+
+<!-- PROJE 2 -->
+<section class="project-card">
+  <h2>🚦 Trafik Lambası (Arduino)</h2>
+
+  <img src="assets/ardunioproject2.png" alt="Arduino Trafik Lambası">
+
+  <p class="short-desc">
+    Arduino ile 3 LED kullanılarak yapılan trafik lambası projesi.
+  </p>
+
+  <button onclick="toggleDetails('p2')">Detayları Gör</button>
+
+  <div id="p2" class="details">
+    <h3>Açıklama</h3>
+    <p>Bu proje zamanlama ve çoklu LED kontrolünü öğretir.</p>
+
+    <h3>Kod</h3>
+    <pre>
+int kirmizi = 8;
+int sari = 9;
+int yesil = 10;
+
+void setup() {
+  pinMode(kirmizi, OUTPUT);
+  pinMode(sari, OUTPUT);
+  pinMode(yesil, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(kirmizi, HIGH);
+  delay(5000);
+  digitalWrite(kirmizi, LOW);
+
+  digitalWrite(sari, HIGH);
+  delay(2000);
+  digitalWrite(sari, LOW);
+
+  digitalWrite(yesil, HIGH);
+  delay(5000);
+  digitalWrite(yesil, LOW);
+}
+    </pre>
+
+    <button onclick="toggleDetails('p2')">Geri</button>
+  </div>
 </section>
 
 <script src="script.js"></script>
 </body>
 </html>
-
