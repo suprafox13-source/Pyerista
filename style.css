@@ -1,16 +1,17 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-  margin: 0;
   background: #0f172a;
-  color: white;
+  color: #e5e7eb;
 }
 
 /* HEADER */
-header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,52 +19,68 @@ header {
   background: #020617;
 }
 
-.site-url {
-  font-size: 14px;
+.logo span {
+  font-size: 13px;
   color: #94a3b8;
 }
 
-.yt-btn {
+.yt-button {
   background: red;
   color: white;
   padding: 10px 16px;
-  text-decoration: none;
   border-radius: 6px;
+  text-decoration: none;
   font-weight: bold;
 }
 
-/* MAIN */
-main {
-  padding: 30px;
+/* HERO */
+.hero {
+  padding: 40px 30px;
+  text-align: center;
 }
 
-/* PROJECT CARD */
-.project-card {
-  background: #020617;
-  border-radius: 12px;
-  padding: 20px;
-  max-width: 600px;
+.hero h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
 }
 
-.project-img {
-  width: 100%;
-  border-radius: 10px;
-  margin: 15px 0;
-}
-
-.desc {
+.hero p {
   color: #cbd5f5;
 }
 
-/* BUTTON */
+/* PROJECTS */
+.projects {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.project-card {
+  background: #020617;
+  padding: 20px;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.project-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.project-desc {
+  margin: 10px 0;
+  color: #cbd5f5;
+}
+
 .detail-btn {
-  padding: 10px 14px;
-  border: none;
   background: #2563eb;
+  border: none;
+  padding: 10px 14px;
   color: white;
   border-radius: 6px;
   cursor: pointer;
-  margin-bottom: 10px;
 }
 
 /* DETAILS */
@@ -83,4 +100,12 @@ pre {
   padding: 10px;
   border-radius: 6px;
   overflow-x: auto;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #94a3b8;
 }
