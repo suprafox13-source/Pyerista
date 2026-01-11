@@ -2,71 +2,20 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Pyerista | pyerista.onrender.com</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Pyerista</title>
 </head>
-<body>
+<body style="background:black;color:white;text-align:center">
 
-<header>
-  <div>
-    <h1>Pyerista</h1>
-    <span class="site-url">pyerista.onrender.com</span>
-  </div>
+  <h1>Pyerista Resim Test</h1>
 
-  <a class="yt-btn"
-     href="https://www.youtube.com/@XxmanasxX"
-     target="_blank">
-    Pyerista YT
-  </a>
-</header>
+  <!-- RESİM TEST -->
+  <img
+    src="assets/ardunioproject1.png"
+    style="width:300px;border:3px solid red"
+    alt="Arduino Proje 1"
+  >
 
-<main>
+  <p>Eğer bu yazının üstünde resim görüyorsan HER ŞEY DOĞRU.</p>
 
-  <section class="project-card">
-    <h2>Blink (LED Yakıp Söndürme)</h2>
-
-    <p class="desc">
-      Arduino’nun en basit projesi: LED yakıp söndürme.
-    </p>
-
-    <img
-      src="public-site/ardunioproject1.png"
-      alt="Blink Projesi"
-      class="project-img"
-    >
-
-    <button class="detail-btn" onclick="toggleDetails()">
-      Detayları Gör
-    </button>
-
-    <div id="details" class="details hidden">
-
-      <h3>Bağlantılar</h3>
-      <ul>
-        <li>LED → 13. pin</li>
-        <li>220Ω direnç</li>
-        <li>GND → eksi (-)</li>
-      </ul>
-
-      <h3>Kodlar</h3>
-      <pre>
-void setup() {
-  pinMode(13, OUTPUT);
-}
-
-void loop() {
-  digitalWrite(13, HIGH);
-  delay(1000);
-  digitalWrite(13, LOW);
-  delay(1000);
-}
-      </pre>
-
-    </div>
-  </section>
-
-</main>
-
-<script src="script.js"></script>
 </body>
 </html>
