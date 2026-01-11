@@ -1,62 +1,68 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PYERISTA</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Pyerista | Arduino Projeleri</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <!-- YOUTUBE SABİT BUTON -->
-  <a href="https://www.youtube.com/@XxmanasxX" target="_blank" class="yt-button">
-    PYERISTA YT
+<header>
+  <h1>Pyerista</h1>
+
+  <a class="yt-btn"
+     href="https://www.youtube.com/@XxmanasxX"
+     target="_blank">
+    Pyerista YT
   </a>
+</header>
 
-  <!-- HEADER -->
-  <header class="header">
-    <h1>PYERISTA</h1>
-    <p>Projeler • Geliştirme Süreci • Dokümantasyon</p>
-  </header>
+<main>
 
-  <!-- HAKKINDA -->
-  <section class="about">
-    <h2>PYERISTA Nedir?</h2>
+  <!-- PROJE KARTI -->
+  <section class="project-card">
+    <img src="public/Ardunio Project1.png" alt="Blink Projesi">
+    <h2>Blink (LED Yakıp Söndürme)</h2>
+    <p>Arduino’nun en basit projesi: LED yakıp söndürme.</p>
+    <a href="#blink-detay" class="btn">Detayları Gör</a>
+  </section>
+
+  <!-- DETAY BÖLÜMÜ -->
+  <section id="blink-detay" class="detail">
+    <h2>Blink (LED Yakıp Söndürme)</h2>
+
+    <img src="public/Ardunio Project1.png" alt="Blink Detay">
+
+    <h3>Açıklama</h3>
     <p>
-      PYERISTA; yazılım, donanım ve sistem projelerinin
-      geliştirme sürecini şeffaf şekilde paylaşmayı amaçlayan
-      bir platformdur.
+      Arduino’nun en basit projesi LED yakıp söndürmedir.
+      Bu projede dijital pin kullanımı ve delay mantığı öğrenilir.
     </p>
+
+    <h3>Arduino Kodu</h3>
+    <pre><code>
+void setup() {
+  pinMode(13, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(13, HIGH);
+  delay(1000);
+  digitalWrite(13, LOW);
+  delay(1000);
+}
+    </code></pre>
+
+    <h3>Bağlantılar</h3>
+    <ul>
+      <li>LED → 13. pin</li>
+      <li>220Ω direnç</li>
+      <li>GND → eksi (-)</li>
+    </ul>
   </section>
 
-  <!-- PROJELER -->
-  <section class="projects">
-    <h2>Projeler</h2>
+</main>
 
-    <div class="projects-grid">
-
-      <div class="project-card">
-        <img src="assets/images/proje1.png" alt="Proje 1">
-        <h3>Proje Adı</h3>
-        <p>Kısa proje açıklaması burada yer alır.</p>
-        <a href="proje1.html">Detayları Gör</a>
-      </div>
-
-      <div class="project-card">
-        <img src="assets/images/proje2.png" alt="Proje 2">
-        <h3>Proje Adı</h3>
-        <p>Kısa proje açıklaması burada yer alır.</p>
-        <a href="proje2.html">Detayları Gör</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 PYERISTA</p>
-  </footer>
-
+<script src="script.js"></script>
 </body>
 </html>
