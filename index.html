@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>Pyerista</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Pyerista</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1 style="text-align:center">Pyerista</h1>
+<h1 style="text-align:center;">Pyerista</h1>
 
 <div class="project-card">
   <h2>Blink (LED Yakıp Söndürme)</h2>
@@ -21,12 +21,13 @@
   <button onclick="openModal()">Detayları Gör</button>
 </div>
 
-<!-- DETAY POPUP -->
+<!-- DETAY MODAL -->
 <div id="modal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">×</span>
 
-<pre>
+    <h3>Kod</h3>
+    <pre>
 void setup() {
   pinMode(13, OUTPUT);
 }
@@ -37,17 +38,17 @@ void loop() {
   digitalWrite(13, LOW);
   delay(1000);
 }
-</pre>
-
+    </pre>
   </div>
 </div>
 
 <script>
-function openModal(){
-  document.getElementById("modal").style.display="block";
+function openModal() {
+  document.getElementById("modal").style.display = "block";
 }
-function closeModal(){
-  document.getElementById("modal").style.display="none";
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
 }
 </script>
 
