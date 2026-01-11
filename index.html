@@ -29,14 +29,34 @@
 
 </div>
 
-<!-- MODAL PROJE 1 -->
 <div id="p1" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('p1')">×</span>
+
+    <h2>Blink (LED Yakıp Söndürme)</h2>
+
+    <img src="assets/ardunioproject1.png" class="detail-img">
+
+    <p>
+      Ardunionun en basit projesidir. Bu projede bir LED belirli
+      aralıklarla yakılıp söndürülür.
+    </p>
+
+    <h3>Malzemeler</h3>
+    <ul>
+      <li>Arduino Uno</li>
+      <li>1 adet LED</li>
+      <li>220Ω direnç</li>
+      <li>Breadboard</li>
+      <li>Jumper kablolar</li>
+    </ul>
+
+    <h3>Kodlar</h3>
 <pre>
 void setup() {
   pinMode(13, OUTPUT);
 }
+
 void loop() {
   digitalWrite(13, HIGH);
   delay(1000);
@@ -44,35 +64,50 @@ void loop() {
   delay(1000);
 }
 </pre>
+
   </div>
 </div>
 
-<!-- MODAL PROJE 2 -->
+
 <div id="p2" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('p2')">×</span>
+
+    <h2>Trafik Lambası</h2>
+
+    <img src="assets/ardunioproject2.png" class="detail-img">
+
+    <p>
+      Arduino ile trafik lambası simülasyonu. Kırmızı, sarı ve yeşil
+      LED’ler sırayla yanar.
+    </p>
+
+    <h3>Malzemeler</h3>
+    <ul>
+      <li>Arduino Uno</li>
+      <li>3 adet LED (Kırmızı, Sarı, Yeşil)</li>
+      <li>3 adet 220Ω direnç</li>
+      <li>Breadboard</li>
+      <li>Jumper kablolar</li>
+    </ul>
+
+    <h3>Kodlar</h3>
 <pre>
-int k=8,s=9,y=10;
-void setup(){
- pinMode(k,1); pinMode(s,1); pinMode(y,1);
+int k=8, s=9, y=10;
+
+void setup() {
+  pinMode(k, OUTPUT);
+  pinMode(s, OUTPUT);
+  pinMode(y, OUTPUT);
 }
-void loop(){
- digitalWrite(k,1); delay(3000); digitalWrite(k,0);
- digitalWrite(s,1); delay(1000); digitalWrite(s,0);
- digitalWrite(y,1); delay(3000); digitalWrite(y,0);
+
+void loop() {
+  digitalWrite(k, HIGH); delay(3000); digitalWrite(k, LOW);
+  digitalWrite(s, HIGH); delay(1000); digitalWrite(s, LOW);
+  digitalWrite(y, HIGH); delay(3000); digitalWrite(y, LOW);
 }
 </pre>
+
   </div>
 </div>
 
-<script>
-function openModal(id){
-  document.getElementById(id).style.display="flex";
-}
-function closeModal(id){
-  document.getElementById(id).style.display="none";
-}
-</script>
-
-</body>
-</html>
