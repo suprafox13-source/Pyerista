@@ -1,40 +1,129 @@
+/* GENEL */
+* {
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0d0d0d;
-    color: white;
-    text-align: center;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #0f0f0f;
+  color: #ffffff;
 }
 
-header {
-    padding: 40px;
-    background: #1a1a1a;
+/* HEADER */
+.header {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #111, #1a1a1a);
 }
 
-h1 {
-    margin: 0;
-    font-size: 40px;
+.header h1 {
+  margin: 0;
+  font-size: 48px;
+  letter-spacing: 2px;
 }
 
-main {
-    padding: 20px;
+.header p {
+  margin-top: 10px;
+  color: #aaa;
 }
 
-section {
-    margin: 30px 0;
+/* HAKKINDA */
+.about {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
 }
 
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #0055ff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+.about h2 {
+  margin-bottom: 15px;
 }
 
+/* PROJELER */
+.projects {
+  padding: 40px 20px;
+  background: #121212;
+}
+
+.projects h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.project-card {
+  background: #1a1a1a;
+  width: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  transition: 0.3s;
+  text-align: center;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.project-card h3 {
+  margin: 15px 0 5px;
+}
+
+.project-card p {
+  padding: 0 15px;
+  color: #bbb;
+}
+
+.project-card a {
+  display: inline-block;
+  margin: 15px 0 20px;
+  padding: 10px 18px;
+  background: #00aaff;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+/* FOOTER */
 footer {
-    margin-top: 40px;
-    padding: 20px;
-    background: #111;
+  text-align: center;
+  padding: 20px;
+  background: #0a0a0a;
+  color: #666;
+}
+
+/* YOUTUBE SABİT BUTON */
+.yt-button {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ff0000;
+  color: white;
+  padding: 12px 18px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255,0,0,0.6);
+  z-index: 999;
+  transition: 0.2s;
+}
+
+.yt-button:hover {
+  background: #cc0000;
+  transform: translateY(-50%) scale(1.05);
 }
