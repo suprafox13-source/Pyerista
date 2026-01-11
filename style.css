@@ -74,4 +74,10 @@ pre{
   padding:10px;
   border-radius:6px;
   overflow-x:auto;
+.detail-img{
+  width:100%;
+  max-width:350px;
+  display:block;
+  margin:15px auto;
+  border-radius:10px;
 }
