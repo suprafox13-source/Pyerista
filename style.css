@@ -4,6 +4,7 @@ body{
   background:#081a2d;
   font-family:Arial, sans-serif;
   color:white;
+  overflow-y:auto;
 }
 
 /* =========================
@@ -172,3 +173,4 @@ pre{
     font-size:40px;
   }
 }
+
