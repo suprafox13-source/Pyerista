@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Buton ile LED Kontrolü</title>
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f4f6f8;
+}
+.container{
+  max-width:900px;
+  margin:40px auto;
+  background:#fff;
+  padding:30px;
+  border-radius:12px;
+}
+img{
+  max-width:400px;
+  width:100%;
+  display:block;
+  margin:20px auto;
+  border-radius:10px;
+}
+pre{
+  background:#111;
+  color:#00b7ff;
+  padding:15px;
+  border-radius:10px;
+  overflow-x:auto;
+}
+.back{
+  display:inline-block;
+  margin-top:25px;
+  padding:12px 20px;
+  background:#0b3c6d;
+  color:#fff;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>Buton ile LED Kontrolü</h1>
+
+<img src="assets/arduniobutton.png" alt="Buton LED Projesi">
+
+<h2>Açıklama</h2>
+<p>
+Bu projede bir butona basıldığında LED’in yanması,
+buton bırakıldığında sönmesi sağlanır.
+Arduino’da giriş (input) ve çıkış (output) mantığını
+öğrenmek için ideal bir projedir.
+</p>
+
+<h2>Bağlantılar (Neyi Neye Bağlayacağız)</h2>
+<ul>
+  <li>LED uzun bacak → Arduino 8. pin</li>
+  <li>LED kısa bacak → 220Ω direnç → GND</li>
+  <li>Buton bir bacak → Arduino 7. pin</li>
+  <li>Buton diğer bacak → GND</li>
+</ul>
+
+<h2>Malzemeler</h2>
+<ul>
+  <li>Arduino Uno</li>
+  <li>LED</li>
+  <li>Buton</li>
+  <li>220Ω direnç</li>
+  <li>Breadboard</li>
+  <li>Jumper kablolar</li>
+</ul>
+
+<h2>Kodlar</h2>
+<pre>
+int led = 8;
+int button = 7;
+
+void setup() {
+  pinMode(led, OUTPUT);
+  pinMode(button, INPUT_PULLUP);
+}
+
+void loop() {
+  if(digitalRead(button) == LOW){
+    digitalWrite(led, HIGH);
+  } else {
+    digitalWrite(led, LOW);
+  }
+}
+</pre>
+
+<a href="index.html" class="back">← Ana Sayfaya Dön</a>
+</div>
+
+</body>
+</html>
