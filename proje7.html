@@ -2,64 +2,93 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Servo Motor Projesi</title>
-<link rel="stylesheet" href="style.css">
+<title>Servo Motor</title>
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f4f6f8;
+}
+.container{
+  max-width:900px;
+  margin:40px auto;
+  background:#fff;
+  padding:30px;
+  border-radius:12px;
+}
+img{
+  max-width:400px;
+  width:100%;
+  display:block;
+  margin:20px auto;
+  border-radius:10px;
+}
+pre{
+  background:#111;
+  color:#00b7ff;
+  padding:15px;
+  border-radius:10px;
+  overflow-x:auto;
+}
+.back{
+  display:inline-block;
+  margin-top:25px;
+  padding:12px 20px;
+  background:#0b3c6d;
+  color:#fff;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+}
+</style>
 </head>
 <body>
-
 <div class="container">
-  <h1>Servo Motor Kontrolü</h1>
 
-  <img src="assets/servo.png" alt="Servo Motor">
+<h1>Servo Motor Projesi</h1>
+<img src="assets/servo.png">
 
-  <h2>Açıklama</h2>
-  <p>
-    Bu projede servo motor kullanılarak
-    0–180 derece arası dönüş sağlanır.
-    Servo motorlar kapı, kol ve mekanizma
-    projelerinde sıkça kullanılır.
-  </p>
+<h2>Açıklama</h2>
+<p>
+Servo motor kullanılarak belirli açılara
+dönme işlemi gerçekleştirilir.
+</p>
 
-  <h2>Malzemeler</h2>
-  <ul>
-    <li>Arduino Uno</li>
-    <li>Servo motor</li>
-    <li>Jumper kablolar</li>
-  </ul>
+<h2>Bağlantılar</h2>
+<ul>
+<li>Kırmızı → 5V</li>
+<li>Kahverengi → GND</li>
+<li>Sarı → 9</li>
+</ul>
 
-  <h2>Kodlar</h2>
-  <pre>
+<h2>Malzemeler</h2>
+<ul>
+<li>Arduino Uno</li>
+<li>Servo Motor</li>
+<li>Jumper Kablolar</li>
+</ul>
+
 <h2>Kodlar</h2>
 <pre>
-int trig = 9;
-int echo = 10;
+#include <Servo.h>
+
+Servo motor;
 
 void setup() {
-  pinMode(trig, OUTPUT);
-  pinMode(echo, INPUT);
-  Serial.begin(9600);
+  motor.attach(9);
 }
 
 void loop() {
-  digitalWrite(trig, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trig, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trig, LOW);
-
-  long sure = pulseIn(echo, HIGH);
-  long mesafe = sure / 58;
-
-  Serial.print("Mesafe: ");
-  Serial.println(mesafe);
-  delay(500);
+  motor.write(0);
+  delay(1000);
+  motor.write(90);
+  delay(1000);
+  motor.write(180);
+  delay(1000);
 }
 </pre>
 
-  </pre>
-
-  <a href="index.html" class="back">← Ana Sayfaya Dön</a>
+<a href="index.html" class="back">← Ana Sayfaya Dön</a>
 </div>
-
 </body>
 </html>
