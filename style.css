@@ -1,36 +1,93 @@
 body{
   margin:0;
   font-family:Arial, sans-serif;
-  background:#f4f6f8;
+  background:#081a2d;
+  color:white;
 }
-.container{
-  max-width:900px;
-  margin:40px auto;
-  background:#fff;
-  padding:30px;
-  border-radius:12px;
+
+/* ÜST ALAN */
+.hero{
+  text-align:center;
+  padding:50px 20px;
+  background:linear-gradient(135deg,#06162a,#0b2f55);
 }
-img{
-  max-width:400px;
-  width:100%;
-  display:block;
-  margin:20px auto;
-  border-radius:10px;
+
+.hero h1{
+  font-size:48px;
+  background:linear-gradient(90deg,#4fc3ff,#1e90ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
-pre{
-  background:#111;
-  color:#00b7ff;
-  padding:15px;
-  border-radius:10px;
-  overflow-x:auto;
+
+.hero p{
+  max-width:600px;
+  margin:10px auto 20px;
+  color:#cfefff;
 }
-.back{
-  display:inline-block;
-  margin-top:25px;
-  padding:12px 20px;
-  background:#0b3c6d;
-  color:#fff;
+
+/* YOUTUBE */
+.yt-btn{
+  background:#4fc3ff;
+  color:#081a2d;
+  padding:12px 22px;
+  border-radius:25px;
   text-decoration:none;
-  border-radius:8px;
   font-weight:bold;
+}
+
+/* PROJELER */
+.projects{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:25px;
+  padding:30px;
+}
+
+.project-card{
+  background:#0f2b46;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
+}
+
+.project-card img{
+  width:100%;
+  border-radius:10px;
+  margin:10px 0;
+}
+
+.project-card h2{
+  color:#4fc3ff;
+}
+
+.project-card p{
+  color:#cfefff;
+}
+
+/* DETAY BUTONU */
+.detail-link{
+  display:inline-block;
+  margin-top:10px;
+  background:#4fc3ff;
+  color:#081a2d;
+  padding:10px 18px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+  .projects{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .projects{
+    grid-template-columns:1fr;
+  .site-logo{
+  height:70px;   /* istersen 60–80 arası oynayabilirsin */
+  width:auto;
+  display:block;
 }
