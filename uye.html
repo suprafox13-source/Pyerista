@@ -2,7 +2,8 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Üye Ol</title>
+<title>Üye Ol / Giriş Yap</title>
+
 <style>
 body{
   margin:0;
@@ -15,6 +16,9 @@ body{
   background:#fff;
   padding:30px;
   border-radius:12px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+h1{
   text-align:center;
 }
 input{
@@ -27,68 +31,109 @@ input{
 button{
   width:100%;
   padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:6px;
   background:#0b3c6d;
   color:white;
-  border:none;
-  border-radius:8px;
-  font-size:16px;
+  font-weight:bold;
   cursor:pointer;
+}
+.info{
+  margin-top:15px;
+  text-align:center;
+  font-weight:bold;
 }
 </style>
 </head>
+
 <body>
 
 <div class="container">
-<h1>Üye Ol</h1>
+  <h1>Üyelik</h1>
 
-<input type="text" id="username" placeholder="Kullanıcı Adı">
-<input type="password" id="password" placeholder="Şifre">
+  <input type="text" id="username" placeholder="Kullanıcı Adı">
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Şifre">
 
-<button onclick="uyeOl()">Kaydol</button>
+  <button onclick="register()">Kayıt Ol</button>
+  <button onclick="login()">Giriş Yap</button>
+
+  <div class="info" id="info"></div>
+  <div class="info">Toplam Üye: <span id="count">0</span></div>
 </div>
 
-<script>
-function uyeOl(){
-  let user = document.getElementById("username").value;
-  let pass = document.getElementById("password").value;
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, collection, doc, setDoc, getDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-  if(user=="" || pass==""){
-    alert("Boş bırakma");
+const firebaseConfig = {
+  apiKey: "AIzaSyCwl2xoth2_jFKGvCHb-NDqS6IXhakGRQM",
+  authDomain: "pyerista.firebaseapp.com",
+  projectId: "pyerista",
+  storageBucket: "pyerista.firebasestorage.app",
+  messagingSenderId: "398648392787",
+  appId: "1:398648392787:web:e0dc220487d6661a4e5aa6"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const info = document.getElementById("info");
+const countEl = document.getElementById("count");
+
+async function updateCount(){
+  const snap = await getDocs(collection(db, "users"));
+  countEl.textContent = snap.size;
+}
+updateCount();
+
+window.register = async function(){
+  const username = username.value.trim();
+  const email = email.value.trim();
+  const password = password.value;
+
+  if(!username || !email || !password){
+    info.textContent = "Tüm alanları doldur";
     return;
   }
 
-  localStorage.setItem("uye", user);
-
-  // üye sayacı
-  let sayac = localStorage.getItem("uyeSayisi");
-  if(!sayac){
-    sayac = 0;
+  const userDoc = await getDoc(doc(db, "users", username));
+  if(userDoc.exists()){
+    info.textContent = "Bu kullanıcı adı alınmış";
+    return;
   }
-  sayac++;
-  localStorage.setItem("uyeSayisi", sayac);
 
-  alert("Başarıyla üye oldun!");
-  window.location.href = "index.html";
+  try{
+    const cred = await createUserWithEmailAndPassword(auth, email, password);
+    await setDoc(doc(db, "users", username), {
+      uid: cred.user.uid,
+      email: email
+    });
+    info.textContent = "Kayıt başarılı 🎉";
+    updateCount();
+  }catch(e){
+    info.textContent = e.message;
+  }
 }
+
+window.login = async function(){
+  try{
+    await signInWithEmailAndPassword(auth, email.value, password.value);
+    info.textContent = "Giriş başarılı ✅";
+  }catch(e){
+    info.textContent = e.message;
+  }
+}
+
+onAuthStateChanged(auth, (user)=>{
+  if(user){
+    info.textContent = "Zaten giriş yapılmış 👌";
+  }
+});
 </script>
 
 </body>
 </html>
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-  import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "BURAYA",
-    authDomain: "BURAYA",
-    projectId: "BURAYA",
-    storageBucket: "BURAYA",
-    messagingSenderId: "BURAYA",
-    appId: "BURAYA"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-</script>
