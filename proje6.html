@@ -30,7 +30,25 @@
 
   <h2>Kodlar</h2>
   <pre>
-// Yakında eklenecek
+<h2>Kodlar</h2>
+<pre>
+int sensorPin = A0;
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  int deger = analogRead(sensorPin);
+  float volt = deger * (5.0 / 1023.0);
+  float sicaklik = volt * 100;
+
+  Serial.print("Sıcaklık: ");
+  Serial.println(sicaklik);
+  delay(1000);
+}
+</pre>
+
   </pre>
 
   <a href="index.html" class="back">← Ana Sayfaya Dön</a>
