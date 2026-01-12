@@ -2,57 +2,60 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Işık Sensörü Projesi</title>
-<link rel="stylesheet" href="style.css">
+<title>Servo Motor</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f4f6f8}
+.container{max-width:900px;margin:40px auto;background:#fff;padding:30px;border-radius:12px}
+img{max-width:400px;width:100%;display:block;margin:20px auto;border-radius:10px}
+pre{background:#111;color:#00b7ff;padding:15px;border-radius:10px;overflow-x:auto}
+.back{display:inline-block;margin-top:25px;padding:12px 20px;background:#0b3c6d;color:#fff;text-decoration:none;border-radius:8px;font-weight:bold}
+</style>
 </head>
 <body>
-
 <div class="container">
-  <h1>Işık Sensörü (LDR)</h1>
+<h1>Servo Motor Projesi</h1>
+<img src="assets/servo.png">
 
-  <img src="assets/ldr.png" alt="LDR Projesi">
+<h2>Açıklama</h2>
+<p>
+Servo motor belirli açılara döndürülerek
+kontrol edilir.
+</p>
 
-  <h2>Açıklama</h2>
-  <p>
-    Bu projede LDR kullanılarak ortamın
-    aydınlık veya karanlık durumu algılanır.
-    Ortam karardığında LED otomatik olarak yanar.
-  </p>
+<h2>Bağlantılar</h2>
+<ul>
+<li>Kırmızı → 5V</li>
+<li>Kahverengi → GND</li>
+<li>Sarı → 9</li>
+</ul>
 
-  <h2>Malzemeler</h2>
-  <ul>
-    <li>Arduino Uno</li>
-    <li>LDR</li>
-    <li>LED</li>
-    <li>220Ω direnç</li>
-    <li>Jumper kablolar</li>
-  </ul>
+<h2>Malzemeler</h2>
+<ul>
+<li>Arduino Uno</li>
+<li>Servo Motor</li>
+<li>Jumper Kablolar</li>
+</ul>
 
-  <h2>Kodlar</h2>
-  <pre>
 <h2>Kodlar</h2>
 <pre>
-int sensorPin = A0;
+#include <Servo.h>
+Servo servo;
 
 void setup() {
-  Serial.begin(9600);
+  servo.attach(9);
 }
 
 void loop() {
-  int deger = analogRead(sensorPin);
-  float volt = deger * (5.0 / 1023.0);
-  float sicaklik = volt * 100;
-
-  Serial.print("Sıcaklık: ");
-  Serial.println(sicaklik);
+  servo.write(0);
+  delay(1000);
+  servo.write(90);
+  delay(1000);
+  servo.write(180);
   delay(1000);
 }
 </pre>
 
-  </pre>
-
-  <a href="index.html" class="back">← Ana Sayfaya Dön</a>
+<a href="index.html" class="back">← Ana Sayfaya Dön</a>
 </div>
-
 </body>
 </html>
