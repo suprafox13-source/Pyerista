@@ -31,7 +31,26 @@
 
   <h2>Kodlar</h2>
   <pre>
-// Yakında eklenecek
+<h2>Kodlar</h2>
+<pre>
+#include <Servo.h>
+
+Servo motor;
+
+void setup() {
+  motor.attach(9);
+}
+
+void loop() {
+  motor.write(0);
+  delay(1000);
+  motor.write(90);
+  delay(1000);
+  motor.write(180);
+  delay(1000);
+}
+</pre>
+
   </pre>
 
   <a href="index.html" class="back">← Ana Sayfaya Dön</a>
