@@ -5,26 +5,45 @@ body{
   color:white;
 }
 
-.title{
+/* ÜST ALAN */
+.hero{
   text-align:center;
-  margin:20px 0;
-  color:#4fc3ff;
+  padding:40px 20px;
 }
 
+.hero h1{
+  color:#4fc3ff;
+  font-size:48px;
+}
+
+.hero p{
+  max-width:600px;
+  margin:10px auto 20px;
+  color:#cfefff;
+}
+
+.yt-btn{
+  background:#ff0000;
+  color:white;
+  padding:12px 20px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* PROJELER */
 .projects{
-  display:flex;
-  justify-content:center;
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
   gap:30px;
-  flex-wrap:wrap;
+  padding:30px;
 }
 
 .project-card{
   background:#0f2b46;
-  width:300px;
   padding:20px;
   border-radius:12px;
   text-align:center;
-  box-shadow:0 0 15px #000;
 }
 
 .project-card img{
@@ -46,21 +65,24 @@ button{
   font-weight:bold;
 }
 
+/* MODAL */
 .modal{
   display:none;
   position:fixed;
   inset:0;
   background:rgba(0,0,0,0.8);
-  align-items:center;
   justify-content:center;
+  align-items:center;
 }
 
 .modal-content{
   background:#0f2b46;
   padding:20px;
   border-radius:10px;
+  max-width:700px;
   width:90%;
-  max-width:600px;
+  max-height:90%;
+  overflow:auto;
 }
 
 .close{
@@ -69,15 +91,25 @@ button{
   cursor:pointer;
 }
 
-pre{
-  background:#081a2d;
-  padding:10px;
-  border-radius:6px;
-  overflow-x:auto;
 .detail-img{
   width:100%;
   max-width:350px;
   display:block;
   margin:15px auto;
   border-radius:10px;
+}
+
+pre{
+  background:#081a2d;
+  padding:10px;
+  border-radius:6px;
+  overflow-x:auto;
+}
+
+/* RESPONSIVE */
+@media(max-width:1200px){
+  .projects{ grid-template-columns: repeat(2,1fr); }
+}
+@media(max-width:600px){
+  .projects{ grid-template-columns: 1fr; }
 }
