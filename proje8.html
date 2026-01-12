@@ -29,7 +29,22 @@
 
   <h2>Kodlar</h2>
   <pre>
-// Yakında eklenecek
+<h2>Kodlar</h2>
+<pre>
+int ldr = A0;
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  int isik = analogRead(ldr);
+  Serial.print("Işık Seviyesi: ");
+  Serial.println(isik);
+  delay(500);
+}
+</pre>
+
   </pre>
 
   <a href="index.html" class="back">← Ana Sayfaya Dön</a>
