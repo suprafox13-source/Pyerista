@@ -2,53 +2,89 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Sıcaklık Sensörü Projesi</title>
-<link rel="stylesheet" href="style.css">
+<title>Sıcaklık Sensörü</title>
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f4f6f8;
+}
+.container{
+  max-width:900px;
+  margin:40px auto;
+  background:#fff;
+  padding:30px;
+  border-radius:12px;
+}
+img{
+  max-width:400px;
+  width:100%;
+  display:block;
+  margin:20px auto;
+  border-radius:10px;
+}
+pre{
+  background:#111;
+  color:#00b7ff;
+  padding:15px;
+  border-radius:10px;
+  overflow-x:auto;
+}
+.back{
+  display:inline-block;
+  margin-top:25px;
+  padding:12px 20px;
+  background:#0b3c6d;
+  color:#fff;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+}
+</style>
 </head>
 <body>
-
 <div class="container">
-  <h1>Sıcaklık Sensörü</h1>
 
-  <img src="assets/sıcaklık.png" alt="Sıcaklık Sensörü">
+<h1>Sıcaklık Sensörü Projesi</h1>
+<img src="assets/sıcaklık.png">
 
-  <h2>Açıklama</h2>
-  <p>
-    Bu projede sıcaklık sensörü kullanılarak
-    ortam sıcaklığı ölçülür.
-    Belirli bir sıcaklık değerine ulaşıldığında
-    LED veya uyarı sistemi çalıştırılabilir.
-  </p>
+<h2>Açıklama</h2>
+<p>
+Sıcaklık sensörü ile ortam sıcaklığı
+ölçülür ve seri ekranda gösterilir.
+</p>
 
-  <h2>Malzemeler</h2>
-  <ul>
-    <li>Arduino Uno</li>
-    <li>DHT11 veya LM35</li>
-    <li>Jumper kablolar</li>
-  </ul>
+<h2>Bağlantılar</h2>
+<ul>
+<li>VCC → 5V</li>
+<li>GND → GND</li>
+<li>OUT → A0</li>
+</ul>
 
-  <h2>Kodlar</h2>
-  <pre>
+<h2>Malzemeler</h2>
+<ul>
+<li>Arduino Uno</li>
+<li>LM35 Sıcaklık Sensörü</li>
+<li>Jumper Kablolar</li>
+</ul>
+
 <h2>Kodlar</h2>
 <pre>
-int ldr = A0;
+int sensor = A0;
 
 void setup() {
   Serial.begin(9600);
 }
 
 void loop() {
-  int isik = analogRead(ldr);
-  Serial.print("Işık Seviyesi: ");
-  Serial.println(isik);
+  int deger = analogRead(sensor);
+  float sicaklik = deger * 0.488;
+  Serial.println(sicaklik);
   delay(500);
 }
 </pre>
 
-  </pre>
-
-  <a href="index.html" class="back">← Ana Sayfaya Dön</a>
+<a href="index.html" class="back">← Ana Sayfaya Dön</a>
 </div>
-
 </body>
 </html>
