@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Proje 2 | Pyerista</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ÜST BAŞLIK -->
+  <header class="top-bar">
+    <h1>Pyerista</h1>
+    <a href="index.html" class="back-btn">← Ana Sayfaya Dön</a>
+  </header>
+
+  <!-- PROJE DETAY ALANI -->
+  <main class="project-detail">
+
+    <h2>Arduino LED Projesi</h2>
+
+    <!-- PROJE RESMİ -->
+    <img src="assets/arduinoproject2.png" alt="Arduino Proje 2" class="project-img">
+
+    <!-- AÇIKLAMA -->
+    <section>
+      <h3>Açıklama</h3>
+      <p>
+        Bu projede Arduino kullanarak bir LED’in yakılıp söndürülmesi
+        öğretilmektedir. Yeni başlayanlar için en temel ve anlaşılır projelerden biridir.
+      </p>
+    </section>
+
+    <!-- MALZEMELER -->
+    <section>
+      <h3>Gerekli Malzemeler</h3>
+      <ul>
+        <li>Arduino Uno</li>
+        <li>LED</li>
+        <li>220 Ohm Direnç</li>
+        <li>Breadboard</li>
+        <li>Jumper Kablolar</li>
+      </ul>
+    </section>
+
+    <!-- BAĞLANTILAR -->
+    <section>
+      <h3>Bağlantılar</h3>
+      <p>
+        LED’in uzun bacağı (anot) Arduino’nun <b>13. pinine</b> bağlanır.  
+        Kısa bacak (katot) direnç üzerinden <b>GND</b> pinine bağlanır.
+      </p>
+    </section>
+
+    <!-- KODLAR -->
+    <section>
+      <h3>Arduino Kodu</h3>
+      <pre class="code-box">
+void setup() {
+  pinMode(13, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(13, HIGH);
+  delay(1000);
+  digitalWrite(13, LOW);
+  delay(1000);
+}
+      </pre>
+    </section>
+
+  </main>
+
+</body>
+</html>
