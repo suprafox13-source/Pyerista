@@ -1,78 +1,96 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Pyerista | Proje 2</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Proje 2 – LED Yakıp Söndürme</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f4f6f8;
+}
+.container{
+  max-width:900px;
+  margin:40px auto;
+  background:#fff;
+  padding:30px;
+  border-radius:12px;
+}
+img{
+  max-width:400px;
+  width:100%;
+  display:block;
+  margin:20px auto;
+  border-radius:10px;
+}
+pre{
+  background:#111;
+  color:#00b7ff;
+  padding:15px;
+  border-radius:10px;
+  overflow-x:auto;
+}
+.back{
+  display:inline-block;
+  margin-top:25px;
+  padding:12px 20px;
+  background:#0b3c6d;
+  color:#fff;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+}
+</style>
 </head>
+
 <body>
+<div class="container">
 
-  <!-- ÜST BAR -->
-  <header class="top-bar">
-    <h1>Pyerista</h1>
-    <a href="index.html" class="back-btn">← Ana Sayfaya Dön</a>
-  </header>
+<h1>Proje 2 – LED Yakıp Söndürme</h1>
 
-  <!-- PROJE ALANI -->
-  <main class="project-detail">
+<img src="assets/arduinoproject2.png" alt="Proje 2">
 
-    <h2>Proje 2 – Arduino LED Projesi</h2>
+<h2>Açıklama</h2>
+<p>
+Bu projede Arduino kullanılarak bir LED’in
+belirli aralıklarla yanıp sönmesi sağlanır.
+Arduino öğrenmeye yeni başlayanlar için
+en temel ve öğretici projelerden biridir.
+</p>
 
-    <!-- PROJE RESMİ -->
-    <div class="project-image">
-      <img src="assets/arduinoproject2.png" alt="Proje 2">
-    </div>
+<h2>Bağlantılar (Neyi Neye Bağlayacağız)</h2>
+<ul>
+  <li>LED uzun bacak → Arduino 13. pin</li>
+  <li>LED kısa bacak → 220Ω direnç</li>
+  <li>Direnç → GND</li>
+</ul>
 
-    <!-- AÇIKLAMA -->
-    <section class="project-section">
-      <h3>📘 Proje Açıklaması</h3>
-      <p>
-        Bu projede Arduino kullanarak temel bir LED kontrolü yapılmaktadır.
-        LED belirli aralıklarla yanıp söner. Başlangıç seviyesi için uygundur.
-      </p>
-    </section>
+<h2>Malzemeler</h2>
+<ul>
+  <li>Arduino Uno</li>
+  <li>LED</li>
+  <li>220Ω direnç</li>
+  <li>Breadboard</li>
+  <li>Jumper kablolar</li>
+</ul>
 
-    <!-- MALZEMELER -->
-    <section class="project-section">
-      <h3>🧰 Gerekli Malzemeler</h3>
-      <ul>
-        <li>Arduino Uno</li>
-        <li>LED</li>
-        <li>220Ω Direnç</li>
-        <li>Breadboard</li>
-        <li>Jumper Kablolar</li>
-      </ul>
-    </section>
-
-    <!-- BAĞLANTI ŞEMASI -->
-    <section class="project-section">
-      <h3>🔌 Bağlantılar</h3>
-      <ul>
-        <li>LED (+) → Arduino Pin 8</li>
-        <li>LED (-) → 220Ω Direnç → GND</li>
-      </ul>
-    </section>
-
-    <!-- KOD -->
-    <section class="project-section">
-      <h3>💻 Arduino Kodu</h3>
-      <pre class="code-box">
-int led = 8;
-
+<h2>Kodlar</h2>
+<pre>
 void setup() {
-  pinMode(led, OUTPUT);
+  pinMode(13, OUTPUT);
 }
 
 void loop() {
-  digitalWrite(led, HIGH);
+  digitalWrite(13, HIGH);
   delay(1000);
-  digitalWrite(led, LOW);
+  digitalWrite(13, LOW);
   delay(1000);
 }
-      </pre>
-    </section>
+</pre>
 
-  </main>
+<a href="index.html" class="back">← Ana Sayfaya Dön</a>
 
+</div>
 </body>
 </html>
