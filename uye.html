@@ -2,20 +2,57 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Üyelik</title>
-<link rel="stylesheet" href="style.css">
+<title>Üye Ol / Giriş Yap</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f4f6f8;
+}
+.container{
+  max-width:400px;
+  margin:80px auto;
+  background:#fff;
+  padding:30px;
+  border-radius:12px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+h1{text-align:center;}
+input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:6px;
+  background:#0b3c6d;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+.info{
+  margin-top:15px;
+  text-align:center;
+  font-weight:bold;
+}
+</style>
 </head>
 
 <body>
 
-<div class="container" id="authBox">
+<div class="container">
   <h1>Üyelik</h1>
 
   <input id="username" placeholder="Kullanıcı Adı">
   <input id="email" type="email" placeholder="Email">
   <input id="password" type="password" placeholder="Şifre">
-  <textarea id="bio" placeholder="Profil açıklaması"></textarea>
-  <input type="file" id="photo">
 
   <button onclick="register()">Kayıt Ol</button>
   <button onclick="login()">Giriş Yap</button>
@@ -24,24 +61,28 @@
   <div class="info">Toplam Üye: <span id="count">0</span></div>
 </div>
 
-<div class="container profile" id="profileBox" style="display:none;">
-  <img id="profileImg">
-  <h2 id="profileName"></h2>
-  <p id="profileBio"></p>
-  <button onclick="logout()">Çıkış Yap</button>
-</div>
-
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { getFirestore, collection, doc, setDoc, getDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import {
+  getFirestore,
+  collection,
+  doc,
+  setDoc,
+  getDoc,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCwl2xoth2_jFKGvCHb-NDqS6IXhakGRQM",
+  apiKey: "BURAYA_KENDİ_API_KEYİN",
   authDomain: "pyerista.firebaseapp.com",
   projectId: "pyerista",
-  storageBucket: "pyerista.firebasestorage.app",
+  storageBucket: "pyerista.appspot.com",
   messagingSenderId: "398648392787",
   appId: "1:398648392787:web:e0dc220487d6661a4e5aa6"
 };
@@ -49,71 +90,58 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-const storage = getStorage(app);
 
 const info = document.getElementById("info");
 const countEl = document.getElementById("count");
 
 async function updateCount(){
-  const snap = await getDocs(collection(db,"users"));
+  const snap = await getDocs(collection(db, "users"));
   countEl.textContent = snap.size;
 }
 updateCount();
 
-window.register = async ()=>{
+window.register = async () => {
   const u = username.value.trim();
   const e = email.value.trim();
   const p = password.value;
-  const b = bio.value;
-  const file = photo.files[0];
 
-  if(!u||!e||!p){ info.textContent="Alanları doldur"; return;}
-
-  if((await getDoc(doc(db,"users",u))).exists()){
-    info.textContent="Bu kullanıcı adı alınmış";
+  if(!u || !e || !p){
+    info.textContent = "Tüm alanları doldur";
     return;
   }
 
-  const cred = await createUserWithEmailAndPassword(auth,e,p);
-
-  let imgURL="";
-  if(file){
-    const r = ref(storage,"profiles/"+cred.user.uid);
-    await uploadBytes(r,file);
-    imgURL = await getDownloadURL(r);
+  const userRef = doc(db, "users", u);
+  const userSnap = await getDoc(userRef);
+  if(userSnap.exists()){
+    info.textContent = "Bu kullanıcı adı alınmış";
+    return;
   }
 
-  await setDoc(doc(db,"users",u),{
-    uid:cred.user.uid,
-    bio:b,
-    photo:imgURL
-  });
-
-  info.textContent="Kayıt başarılı 🎉";
-  updateCount();
-};
-
-window.login = async ()=>{
-  await signInWithEmailAndPassword(auth,email.value,password.value);
-};
-
-window.logout = async ()=>{
-  await signOut(auth);
-  location.reload();
-};
-
-onAuthStateChanged(auth, async user=>{
-  if(user){
-    const snap = await getDocs(collection(db,"users"));
-    snap.forEach(d=>{
-      if(d.data().uid===user.uid){
-        authBox.style.display="none";
-        profileBox.style.display="block";
-        profileName.textContent=d.id;
-        profileBio.textContent=d.data().bio;
-        profileImg.src=d.data().photo || "https://via.placeholder.com/120";
-      }
+  try{
+    const cred = await createUserWithEmailAndPassword(auth, e, p);
+    await setDoc(userRef, {
+      uid: cred.user.uid,
+      email: e
     });
+    info.textContent = "Kayıt başarılı 🎉";
+    updateCount();
+  }catch(err){
+    info.textContent = err.message;
+  }
+};
+
+window.login = async () => {
+  try{
+    await signInWithEmailAndPassword(auth, email.value, password.value);
+    info.textContent = "Giriş başarılı ✅";
+  }catch(err){
+    info.textContent = err.message;
+  }
+};
+
+onAuthStateChanged(auth, (user)=>{
+  if(user){
+    info.textContent = "Zaten giriş yapılmış 👌";
   }
 });
 </script>
