@@ -3,90 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <title>Üyelik</title>
-
-<style>
-body{
-  font-family:Arial, sans-serif;
-  background:#f4f6f8;
-}
-
-.container{
-  max-width:400px;
-  margin:80px auto;
-  background:#fff;
-  padding:25px;
-  border-radius:12px;
-}
-
-input,button{
-  width:100%;
-  padding:10px;
-  margin:8px 0;
-}
-
-button{
-  background:#0b3c6d;
-  color:white;
-  border:none;
-  border-radius:6px;
-  cursor:pointer;
-}
-
-.profile-box{
-  position:fixed;
-  top:15px;
-  right:15px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.profile-box img{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  object-fit:cover;
-  border:2px solid #0b3c6d;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- ÜST SAĞ -->
+<div class="container" id="authBox">
+  <h1>Üyelik</h1>
 
-<div id="profileBox" class="profile-box" style="display:none;">
-  <img id="profileImg">
-  <button onclick="logout()">Çıkış</button>
-</div>
-
-<!-- FORM -->
-<div class="container">
-  <h2>Üyelik</h2>
-
+  <input id="username" placeholder="Kullanıcı Adı">
   <input id="email" type="email" placeholder="Email">
   <input id="password" type="password" placeholder="Şifre">
-  <input id="photo" type="file" accept="image/*">
+  <textarea id="bio" placeholder="Profil açıklaması"></textarea>
+  <input type="file" id="photo">
 
   <button onclick="register()">Kayıt Ol</button>
   <button onclick="login()">Giriş Yap</button>
 
-  <div id="info"></div>
+  <div class="info" id="info"></div>
+  <div class="info">Toplam Üye: <span id="count">0</span></div>
 </div>
 
-<!-- FIREBASE -->
+<div class="container profile" id="profileBox" style="display:none;">
+  <img id="profileImg">
+  <h2 id="profileName"></h2>
+  <p id="profileBio"></p>
+  <button onclick="logout()">Çıkış Yap</button>
+</div>
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getFirestore, collection, doc, setDoc, getDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
 const firebaseConfig = {
-  apiKey: "API_KEY",
+  apiKey: "AIzaSyCwl2xoth2_jFKGvCHb-NDqS6IXhakGRQM",
   authDomain: "pyerista.firebaseapp.com",
   projectId: "pyerista",
-  storageBucket: "pyerista.appspot.com",
-  appId: "APP_ID"
+  storageBucket: "pyerista.firebasestorage.app",
+  messagingSenderId: "398648392787",
+  appId: "1:398648392787:web:e0dc220487d6661a4e5aa6"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -94,62 +51,69 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-const uyeBtn = document.getElementById("uyeBtn");
-const profileBox = document.getElementById("profileBox");
-const profileImg = document.getElementById("profileImg");
 const info = document.getElementById("info");
+const countEl = document.getElementById("count");
 
-window.register = async () => {
-  try{
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const file = document.getElementById("photo").files[0];
-
-    const cred = await createUserWithEmailAndPassword(auth, email, password);
-
-    let photoURL = "";
-    if(file){
-      const imgRef = ref(storage, "profiles/" + cred.user.uid);
-      await uploadBytes(imgRef, file);
-      photoURL = await getDownloadURL(imgRef);
-    }
-
-    await setDoc(doc(db,"users",cred.user.uid), {
-      email,
-      photoURL
-    });
-
-    info.textContent = "Kayıt başarılı";
-  }catch(e){
-    info.textContent = e.message;
-  }
+async function updateCount(){
+  const snap = await getDocs(collection(db,"users"));
+  countEl.textContent = snap.size;
 }
+updateCount();
 
-window.login = async () => {
-  try{
-    await signInWithEmailAndPassword(
-      auth,
-      email.value,
-      password.value
-    );
-  }catch(e){
-    info.textContent = e.message;
+window.register = async ()=>{
+  const u = username.value.trim();
+  const e = email.value.trim();
+  const p = password.value;
+  const b = bio.value;
+  const file = photo.files[0];
+
+  if(!u||!e||!p){ info.textContent="Alanları doldur"; return;}
+
+  if((await getDoc(doc(db,"users",u))).exists()){
+    info.textContent="Bu kullanıcı adı alınmış";
+    return;
   }
-}
 
-window.logout = async () => {
+  const cred = await createUserWithEmailAndPassword(auth,e,p);
+
+  let imgURL="";
+  if(file){
+    const r = ref(storage,"profiles/"+cred.user.uid);
+    await uploadBytes(r,file);
+    imgURL = await getDownloadURL(r);
+  }
+
+  await setDoc(doc(db,"users",u),{
+    uid:cred.user.uid,
+    bio:b,
+    photo:imgURL
+  });
+
+  info.textContent="Kayıt başarılı 🎉";
+  updateCount();
+};
+
+window.login = async ()=>{
+  await signInWithEmailAndPassword(auth,email.value,password.value);
+};
+
+window.logout = async ()=>{
   await signOut(auth);
-}
+  location.reload();
+};
 
-onAuthStateChanged(auth, async (user)=>{
+onAuthStateChanged(auth, async user=>{
   if(user){
-    const snap = await getDoc(doc(db,"users",user.uid));
-    profileImg.src = snap.data().photoURL || "";
-    uyeBtn.style.display="none";
-    profileBox.style.display="flex";
-  }else{
-    uyeBtn.style.display="block";
-    profileBox.style.display="none";
+    const snap = await getDocs(collection(db,"users"));
+    snap.forEach(d=>{
+      if(d.data().uid===user.uid){
+        authBox.style.display="none";
+        profileBox.style.display="block";
+        profileName.textContent=d.id;
+        profileBio.textContent=d.data().bio;
+        profileImg.src=d.data().photo || "https://via.placeholder.com/120";
+      }
+    });
   }
 });
 </script>
