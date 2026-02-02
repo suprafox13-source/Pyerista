@@ -109,6 +109,15 @@ body{
   box-shadow: 0 6px 18px rgba(0,0,0,0.3);
 
   <head>
+  .profile-img{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  object-fit:cover;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,.3);
+}
+
   <style>
     /* varsa diğer stiller */
 
@@ -139,6 +148,7 @@ body{
 </head>
 
 }
+
 
 
 
