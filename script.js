@@ -52,6 +52,10 @@ profilResim.onclick = () => {
 cikisBtn.onclick = async () => {
   await signOut(auth);
   location.reload();
+  window.favoriEkle = function (projeId) {
+  alert("Favori tıklandı: " + projeId);
 };
+
+
 
 
