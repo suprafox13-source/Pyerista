@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "API_KEYİN",
+  apiKey: "AIzaSyCwl2xoth2_jFKGvCHb-NDqS6IXhakGRQM",
   authDomain: "pyerista.firebaseapp.com",
   projectId: "pyerista",
 };
@@ -34,3 +34,4 @@ cikisBtn.onclick = async () => {
   await signOut(auth);
   location.reload();
 };
+
