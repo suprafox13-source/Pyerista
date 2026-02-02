@@ -66,9 +66,20 @@ cikisBtn.onclick = async () => {
     const metin = proje.innerText.toLowerCase();
     proje.style.display = metin.includes(arama) ? "block" : "none";
   });
+      window.projeleriFiltrele = function () {
+  const arama = document.getElementById("projeAra").value.toLowerCase();
+  const projeler = document.querySelectorAll(".proje");
+
+  projeler.forEach((proje) => {
+    const metin = proje.innerText.toLowerCase();
+    proje.style.display = metin.includes(arama) ? "" : "none";
+  });
+};
+
 };
 
     
 
 };
+
 
