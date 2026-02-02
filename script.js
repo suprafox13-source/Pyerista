@@ -1,5 +1,24 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const db = getFirestore();
+
+window.favoriEkle = async (projeId) => {
+  const user = auth.currentUser;
+  if (!user) {
+    alert("Favori için giriş yapmalısın");
+    return;
+  }
+
+  await setDoc(doc(db, "favorites", user.uid + "_" + projeId), {
+    userId: user.uid,
+    projeId: projeId
+  });
+
+  alert("Favorilere eklendi ⭐");
+};
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCwl2xoth2_jFKGvCHb-NDqS6IXhakGRQM",
@@ -34,4 +53,5 @@ cikisBtn.onclick = async () => {
   await signOut(auth);
   location.reload();
 };
+
 
