@@ -55,5 +55,20 @@ cikisBtn.onclick = async () => {
   window.favoriEkle = function (projeId) {
   alert("Favori tıklandı: " + projeId);
     window.favoriEkle = (id) => alert(id);
+    window.projeleriFiltrele = function () {
+  const aramaInput = document.getElementById("projeAra");
+  if (!aramaInput) return;
+
+  const arama = aramaInput.value.toLowerCase();
+  const projeler = document.querySelectorAll(".proje");
+
+  projeler.forEach((proje) => {
+    const metin = proje.innerText.toLowerCase();
+    proje.style.display = metin.includes(arama) ? "block" : "none";
+  });
+};
+
+    
 
 };
+
