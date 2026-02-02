@@ -57,9 +57,3 @@ cikisBtn.onclick = async () => {
     window.favoriEkle = (id) => alert(id);
 
 };
-
-
-
-
-
-
