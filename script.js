@@ -54,7 +54,10 @@ cikisBtn.onclick = async () => {
   location.reload();
   window.favoriEkle = function (projeId) {
   alert("Favori tıklandı: " + projeId);
+    window.favoriEkle = (id) => alert(id);
+
 };
+
 
 
 
