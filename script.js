@@ -4,7 +4,7 @@ import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10
 
 const db = getFirestore();
 
-window.favoriEkle = async (projeId) => {
+window.favoriEkle = async (projeId) => {proje1
   const user = auth.currentUser;
   if (!user) {
     alert("Favori için giriş yapmalısın");
@@ -13,7 +13,7 @@ window.favoriEkle = async (projeId) => {
 
   await setDoc(doc(db, "favorites", user.uid + "_" + projeId), {
     userId: user.uid,
-    projeId: projeId
+    projeId: proje1
   });
 
   alert("Favorilere eklendi ⭐");
@@ -55,6 +55,7 @@ cikisBtn.onclick = async () => {
   window.favoriEkle = function (projeId) {
   alert("Favori tıklandı: " + projeId);
 };
+
 
 
 
